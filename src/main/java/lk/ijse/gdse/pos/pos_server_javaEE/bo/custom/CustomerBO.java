@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface CustomerBO extends SuperBO {
-    ArrayList<CustomerDTO> getAllCustomers( Connection connection);
+    ArrayList<CustomerDTO> getAll( Connection connection) throws SQLException, ClassNotFoundException;
 
     boolean saveCustomer(CustomerDTO dto, Connection connection) throws SQLException, ClassNotFoundException;
 
-    boolean updateCustomer(CustomerDTO dto, Connection connection);
+    boolean updateCustomer(CustomerDTO dto, Connection connection) throws SQLException, ClassNotFoundException;
 
-    boolean deleteCustomer(String id, Connection connection);
+    boolean deleteCustomer(String id, Connection connection) throws SQLException, ClassNotFoundException;
 
 }

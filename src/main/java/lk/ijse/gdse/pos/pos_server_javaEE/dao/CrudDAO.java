@@ -5,11 +5,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface CrudDAO<T,ID> extends SuperDAO{
-    ArrayList<T> getAll() throws SQLException, ClassNotFoundException;
+    ArrayList<T> getAll(Connection connection) throws SQLException, ClassNotFoundException;
 
     boolean save(T entity, Connection connection) throws SQLException, ClassNotFoundException;
 
     boolean update(T entity, Connection connection) throws SQLException, ClassNotFoundException;
 
-    boolean delete(ID id, Connection connection) throws SQLException, ClassNotFoundException;
+    boolean delete(ID id,Connection connection) throws SQLException, ClassNotFoundException;
 }
