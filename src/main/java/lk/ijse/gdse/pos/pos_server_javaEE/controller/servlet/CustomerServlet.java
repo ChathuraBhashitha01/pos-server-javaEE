@@ -53,13 +53,28 @@ public class CustomerServlet extends HttpServlet {
 
         Jsonb jsonb = JsonbBuilder.create();
         CustomerDTO customerDTO = jsonb.fromJson(req.getReader(), CustomerDTO.class);
-        try {
-            connection = dbcp.getConnection();
-            boolean   isSaved = customerBO.saveCustomer(customerDTO,connection);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+
+        if (customerDTO.getId()==null||customerDTO.getId().matches("/^(C00-)[0-9]{3}$/") ){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST,"ID is empty or invalid");
+        }else if (customerDTO.getName()==null||customerDTO.getName().matches("/^[A-Za-z ]{2,}$/") ){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST,"Name is empty or invalid");
+        }else if (customerDTO.getAddress()==null||customerDTO.getAddress().matches("/^[A-Za-z0-9 ]{5,}$/") ) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Address is empty or invalid");
+        }else {
+            try {
+                connection = dbcp.getConnection();
+                boolean isSaved = customerBO.saveCustomer(customerDTO, connection);
+                if (isSaved){
+                    resp.setStatus(HttpServletResponse.SC_CREATED);
+                }
+                else {
+                    resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,"Failed to save the customer");
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -72,13 +87,28 @@ public class CustomerServlet extends HttpServlet {
         Jsonb jsonb = JsonbBuilder.create();
         CustomerDTO customerDTO = jsonb.fromJson(req.getReader(), CustomerDTO.class);
 
-        try {
-            connection = dbcp.getConnection();
-            boolean isUpdated = customerBO.updateCustomer(customerDTO,connection);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        if (customerDTO.getId()==null||customerDTO.getId().matches("/^(C00-)[0-9]{3}$/") ){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST,"ID is empty or invalid");
+        }else if (customerDTO.getName()==null||customerDTO.getName().matches("/^[A-Za-z ]{2,}$/") ){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST,"Name is empty or invalid");
+        }else if (customerDTO.getAddress()==null||customerDTO.getAddress().matches("/^[A-Za-z0-9 ]{5,}$/") ){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST,"Address is empty or invalid");
+        }else {
+            try {
+                connection = dbcp.getConnection();
+                boolean isUpdated = customerBO.updateCustomer(customerDTO, connection);
+
+                if (isUpdated){
+                    resp.setStatus(HttpServletResponse.SC_CREATED);
+                }
+                else {
+                    resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,"Failed to update the customer");
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
     }
@@ -90,13 +120,24 @@ public class CustomerServlet extends HttpServlet {
         BasicDataSource dbcp = (BasicDataSource) servletContext.getAttribute("dbcp");
         Connection connection=null;
 
-        try {
-            connection = dbcp.getConnection();
-            boolean isDelete = customerBO.deleteCustomer(id,connection);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        if (id==null||id.matches("/^(C00-)[0-9]{3}$/") ){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST,"ID is empty or invalid");
+        }else {
+            try {
+                connection = dbcp.getConnection();
+                boolean isDelete = customerBO.deleteCustomer(id, connection);
+
+                if (isDelete){
+                    resp.setStatus(HttpServletResponse.SC_CREATED);
+                }
+                else {
+                    resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,"Failed to delete the customer");
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -4,8 +4,6 @@ import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import lk.ijse.gdse.pos.pos_server_javaEE.bo.BoFactory;
 import lk.ijse.gdse.pos.pos_server_javaEE.bo.custom.ItemBO;
-import lk.ijse.gdse.pos.pos_server_javaEE.dao.DAOFactory;
-import lk.ijse.gdse.pos.pos_server_javaEE.dto.CustomerDTO;
 import lk.ijse.gdse.pos.pos_server_javaEE.dto.ItemDTO;
 import org.apache.commons.dbcp2.BasicDataSource;
 
