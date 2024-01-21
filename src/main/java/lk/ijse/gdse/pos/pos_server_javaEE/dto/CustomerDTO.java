@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class CustomerDTO {
     private String id;
     private String name;
-    private String addrress;
+    private String address;
     private double salary;
 }
