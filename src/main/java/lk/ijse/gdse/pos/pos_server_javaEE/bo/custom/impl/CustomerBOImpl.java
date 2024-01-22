@@ -3,7 +3,6 @@ package lk.ijse.gdse.pos.pos_server_javaEE.bo.custom.impl;
 import lk.ijse.gdse.pos.pos_server_javaEE.bo.custom.CustomerBO;
 import lk.ijse.gdse.pos.pos_server_javaEE.dao.CrudDAO;
 import lk.ijse.gdse.pos.pos_server_javaEE.dao.DAOFactory;
-import lk.ijse.gdse.pos.pos_server_javaEE.dao.custom.impl.CustomerDAOImpl;
 import lk.ijse.gdse.pos.pos_server_javaEE.dto.CustomerDTO;
 import lk.ijse.gdse.pos.pos_server_javaEE.entity.Customer;
 

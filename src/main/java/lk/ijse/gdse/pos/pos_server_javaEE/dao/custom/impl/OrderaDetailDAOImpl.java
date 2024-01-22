@@ -2,6 +2,7 @@ package lk.ijse.gdse.pos.pos_server_javaEE.dao.custom.impl;
 
 import lk.ijse.gdse.pos.pos_server_javaEE.dao.custom.OrderDetailsDAO;
 import lk.ijse.gdse.pos.pos_server_javaEE.dao.custom.impl.util.SQLUtil;
+import lk.ijse.gdse.pos.pos_server_javaEE.entity.Customer;
 import lk.ijse.gdse.pos.pos_server_javaEE.entity.Item;
 import lk.ijse.gdse.pos.pos_server_javaEE.entity.OrderDetail;
 
@@ -14,7 +15,12 @@ public class OrderaDetailDAOImpl implements OrderDetailsDAO {
 
     @Override
     public ArrayList<OrderDetail> getAll(Connection connection) throws SQLException, ClassNotFoundException {
-        return null;
+        ArrayList<OrderDetail> orders=new ArrayList<>();
+        ResultSet resultSet= SQLUtil.execute("SELECT * FROM orderdetail",connection);
+        while (resultSet.next()){
+            orders.add(new OrderDetail(resultSet.getString(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getDouble(4)));
+        }
+        return orders;
     }
 
     @Override
