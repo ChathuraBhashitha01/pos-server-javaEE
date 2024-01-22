@@ -39,4 +39,15 @@ public class ItemDAOImpl implements ItemDAO {
         String sql="DELETE FROM item WHERE code=?";
         return SQLUtil.execute(sql,connection,id);
     }
+
+    @Override
+    public Item search(String id, Connection connection) throws SQLException, ClassNotFoundException {
+        String sql="SELECT * FROM item WHERE code=?";
+        ResultSet resultSet= SQLUtil.execute(sql,connection,id);
+        if(resultSet.next()){
+            return new Item(resultSet.getString(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getDouble(4));
+        }
+        return null;
+    }
+
 }

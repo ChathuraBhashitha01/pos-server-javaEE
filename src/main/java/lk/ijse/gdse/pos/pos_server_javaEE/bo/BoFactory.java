@@ -2,6 +2,7 @@ package lk.ijse.gdse.pos.pos_server_javaEE.bo;
 
 import lk.ijse.gdse.pos.pos_server_javaEE.bo.custom.impl.CustomerBOImpl;
 import lk.ijse.gdse.pos.pos_server_javaEE.bo.custom.impl.ItemBOImpl;
+import lk.ijse.gdse.pos.pos_server_javaEE.bo.custom.impl.PlaceOrderBOImpl;
 
 public class BoFactory {
     private static BoFactory boFactory;
@@ -23,6 +24,8 @@ public class BoFactory {
                 return (T) new CustomerBOImpl();
             case ITEM_BO:
                 return (T) new ItemBOImpl();
+            case PLACE_ORDER_BO:
+                return (T) new PlaceOrderBOImpl();
             default:
                 return null;
         }

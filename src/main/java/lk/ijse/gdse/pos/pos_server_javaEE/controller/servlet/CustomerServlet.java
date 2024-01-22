@@ -7,7 +7,6 @@ import lk.ijse.gdse.pos.pos_server_javaEE.bo.SuperBO;
 import lk.ijse.gdse.pos.pos_server_javaEE.bo.custom.CustomerBO;
 import lk.ijse.gdse.pos.pos_server_javaEE.bo.custom.impl.CustomerBOImpl;
 import lk.ijse.gdse.pos.pos_server_javaEE.dto.CustomerDTO;
-import lombok.SneakyThrows;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.servlet.ServletContext;

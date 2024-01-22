@@ -6,6 +6,7 @@ import lk.ijse.gdse.pos.pos_server_javaEE.bo.custom.impl.CustomerBOImpl;
 import lk.ijse.gdse.pos.pos_server_javaEE.dao.custom.CustomerDAO;
 import lk.ijse.gdse.pos.pos_server_javaEE.dao.custom.impl.util.SQLUtil;
 import lk.ijse.gdse.pos.pos_server_javaEE.entity.Customer;
+import lk.ijse.gdse.pos.pos_server_javaEE.entity.Item;
 
 import javax.servlet.ServletContext;
 import java.sql.Connection;
@@ -44,4 +45,15 @@ public class CustomerDAOImpl implements CustomerDAO {
         String sql="DELETE FROM customer WHERE id=?";
         return SQLUtil.execute(sql,connection,id);
     }
+
+    @Override
+    public Customer search(String id, Connection connection) throws SQLException, ClassNotFoundException {
+        String sql="SELECT * FROM customer WHERE id=?";
+        ResultSet resultSet= SQLUtil.execute(sql,connection,id);
+        if(resultSet.next()){
+            return new Customer(resultSet.getString(1),resultSet.getString(2),resultSet.getString(3),resultSet.getDouble(4));
+        }
+        return null;
+    }
+
 }
