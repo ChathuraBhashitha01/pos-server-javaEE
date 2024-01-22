@@ -1,4 +1,4 @@
-package lk.ijse.gdse.pos.pos_server_javaEE.controller.servlet;
+package lk.ijse.gdse.pos.pos_server_javaEE.api.servlet;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;

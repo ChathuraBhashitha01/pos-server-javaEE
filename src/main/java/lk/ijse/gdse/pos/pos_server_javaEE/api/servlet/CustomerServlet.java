@@ -1,11 +1,9 @@
-package lk.ijse.gdse.pos.pos_server_javaEE.controller.servlet;
+package lk.ijse.gdse.pos.pos_server_javaEE.api.servlet;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import lk.ijse.gdse.pos.pos_server_javaEE.bo.BoFactory;
-import lk.ijse.gdse.pos.pos_server_javaEE.bo.SuperBO;
 import lk.ijse.gdse.pos.pos_server_javaEE.bo.custom.CustomerBO;
-import lk.ijse.gdse.pos.pos_server_javaEE.bo.custom.impl.CustomerBOImpl;
 import lk.ijse.gdse.pos.pos_server_javaEE.dto.CustomerDTO;
 import org.apache.commons.dbcp2.BasicDataSource;
 

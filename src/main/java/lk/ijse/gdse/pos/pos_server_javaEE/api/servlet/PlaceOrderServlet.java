@@ -1,11 +1,10 @@
-package lk.ijse.gdse.pos.pos_server_javaEE.controller.servlet;
+package lk.ijse.gdse.pos.pos_server_javaEE.api.servlet;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import lk.ijse.gdse.pos.pos_server_javaEE.bo.BoFactory;
 import lk.ijse.gdse.pos.pos_server_javaEE.bo.custom.PlaceOrderBO;
 import lk.ijse.gdse.pos.pos_server_javaEE.dto.OrderDTO;
-import lk.ijse.gdse.pos.pos_server_javaEE.dto.OrderDetailDTO;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.servlet.ServletContext;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 @WebServlet(name = "placeOrderServlet",urlPatterns = "/placeorders")
 public class PlaceOrderServlet extends HttpServlet {

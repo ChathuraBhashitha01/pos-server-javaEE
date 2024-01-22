@@ -1,4 +1,4 @@
-package lk.ijse.gdse.pos.pos_server_javaEE.controller.filter;
+package lk.ijse.gdse.pos.pos_server_javaEE.api.filter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

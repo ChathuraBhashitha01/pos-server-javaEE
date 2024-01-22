@@ -1,4 +1,4 @@
-package lk.ijse.gdse.pos.pos_server_javaEE.controller.servlet;
+package lk.ijse.gdse.pos.pos_server_javaEE.api.servlet;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 @WebServlet(name = "orderServlet",urlPatterns = "/orders")
 public class OrderServlet extends HttpServlet {
